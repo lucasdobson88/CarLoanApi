@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CarLoanApi</name>
+    </assembly>
+    <members>
+        <member name="M:CarLoanApi.Controllers.CarController.GetAll">
+            <summary>
+            Retrieves all cars that are available for rent.
+            If there are no cars available, Call the reset endpoint to reset the data
+            </summary>
+            <returns>returns a list of the available cars</returns>
+        </member>
+        <member name="M:CarLoanApi.Controllers.CarController.Update(System.Int32)">
+            <summary>
+            Sets the car to be rented out.
+            </summary>
+            <param name="Id">The Id of the car you wish to rent</param>
+            <returns>returns a new list of the other available cars</returns>
+        </member>
+        <member name="M:CarLoanApi.Controllers.CarController.Reset">
+            <summary>
+            Resets the data's dates back to null
+            </summary>
+        </member>
+    </members>
+</doc>
