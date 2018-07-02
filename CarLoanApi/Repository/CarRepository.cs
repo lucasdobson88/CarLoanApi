@@ -11,13 +11,11 @@ namespace CarLoanApi.Repository
 {
     public class CarRepository : ICarRepository
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
         private readonly string _pathToJson;
 
         public CarRepository(IHostingEnvironment hostingEnvironment)
         {
-            _hostingEnvironment = hostingEnvironment;
-            _pathToJson = _hostingEnvironment.ContentRootPath + "/App_Data/cars.json";
+            _pathToJson = hostingEnvironment.ContentRootPath + "/App_Data/cars.json";
         }
 
         public IEnumerable<Car> GetAll()
