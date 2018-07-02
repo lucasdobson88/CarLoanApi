@@ -35,12 +35,12 @@ namespace CarLoanApi.Controllers
             }
         }
         /// <summary>
-        /// Sets the car to be rented out.
+        /// Sets the car to be booked.
         /// </summary>
-        /// <param name="Id">The Id of the car you wish to rent</param>
+        /// <param name="id">The id of the car you wish to rent</param>
         /// <returns>returns a new list of the other available cars</returns>
 
-        [HttpPut("SetStatus/{id}")]
+        [HttpPut("BookCar/{id}")]
         public IActionResult Update(int id)
         {
             try
@@ -54,7 +54,7 @@ namespace CarLoanApi.Controllers
         }
 
         /// <summary>
-        /// Resets the data's dates back to null
+        /// Resets the data back to default
         /// </summary>
 
         [HttpGet("Reset")]
