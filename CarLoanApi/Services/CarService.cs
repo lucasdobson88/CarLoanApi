@@ -17,15 +17,16 @@ namespace CarLoanApi.Services
         }
 
         public IEnumerable<Car> GetAllCars() {
-            var cars = _carRepository.GetAll();
-            return cars.Where(c => c.CarStatus.RentedDate == null || Convert.ToDateTime(c.CarStatus.RentedDate).AddDays(1) - DateTime.Now > TimeSpan.FromDays(1)).ToList();
+            var allCars = _carRepository.GetAll();
+            var availableCars = allCars.Where(c => c.CarStatus.RentedDate == null || (DateTime.Now - Convert.ToDateTime(c.CarStatus.RentedDate)).TotalHours > 24).ToList();
+            return availableCars;
         }
 
         public IEnumerable<Car> UpdateCarStatus(int id) {
             var car = _carRepository.GetCar(id);
             car.CarStatus.RentedDate = DateTime.Now;
 
-            return _carRepository.SetStatus(car).Where(c => c.CarStatus.RentedDate == null || Convert.ToDateTime(c.CarStatus.RentedDate).AddDays(1) - DateTime.Now > TimeSpan.FromDays(1)).ToList(); 
+            return _carRepository.SetStatus(car).Where(c => c.CarStatus.RentedDate == null || (DateTime.Now - Convert.ToDateTime(c.CarStatus.RentedDate)).TotalHours > 24).ToList();
         }
 
         public void ResetData() {

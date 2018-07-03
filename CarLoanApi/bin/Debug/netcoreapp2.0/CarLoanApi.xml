@@ -15,7 +15,7 @@
             <summary>
             Sets the car to be booked.
             </summary>
-            <param name="id">The id of the car you wish to rent</param>
+            <param name="id">The id of the car you wish to rent between 1 - 5</param>
             <returns>returns a new list of the other available cars</returns>
         </member>
         <member name="M:CarLoanApi.Controllers.CarController.Reset">

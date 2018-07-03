@@ -29,15 +29,15 @@ namespace CarLoanApi.Controllers
             {
                 return Ok(_carService.GetAllCars());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Whoops! something went wrong here. how about we try again :)");
             }
         }
         /// <summary>
         /// Sets the car to be booked.
         /// </summary>
-        /// <param name="id">The id of the car you wish to rent</param>
+        /// <param name="id">The id of the car you wish to rent between 1 - 5</param>
         /// <returns>returns a new list of the other available cars</returns>
 
         [HttpPut("BookCar/{id}")]
@@ -47,9 +47,10 @@ namespace CarLoanApi.Controllers
             {
                 return Ok(_carService.UpdateCarStatus(id));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, 
+                    "I would say you just entered a number that was not between 1 and 5, but i could be wrong. Please try again :)");
             }
         }
 
@@ -65,9 +66,9 @@ namespace CarLoanApi.Controllers
                 _carService.ResetData();
                 return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Resetting data shouldn't be this hard. How about we try it again :D");
             }
         }
     }

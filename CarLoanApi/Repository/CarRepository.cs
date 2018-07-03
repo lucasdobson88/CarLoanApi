@@ -39,9 +39,6 @@ namespace CarLoanApi.Repository
             {
                 item.CarStatus.RentedDate = model.CarStatus.RentedDate;
             }
-            int index = cars.IndexOf(model);
-            if (index != -1)
-                cars[index] = model;
 
             return WriteData(cars);
         }
@@ -65,7 +62,7 @@ namespace CarLoanApi.Repository
             var cars = ReadData();
             var updateRequired = false;
             foreach (var item in cars) {
-                if (Convert.ToDateTime(item.CarStatus.RentedDate).AddDays(1) - DateTime.Now > TimeSpan.FromDays(1))
+                if ((DateTime.Now - Convert.ToDateTime(item.CarStatus.RentedDate)).TotalHours > 24)
                 {
                     item.CarStatus.RentedDate = null;
                     updateRequired = true;
